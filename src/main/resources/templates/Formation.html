@@ -1,0 +1,63 @@
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{css/validation.css}"
+	href="../static/css/validation.css" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+<title>MyOrientation</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+<p></p>
+<div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Espace Administrateur</a></li>
+                <li><a href="#">Gestion des Formations</a></li>
+                
+<!--                 <li class="active" th:text="${article.libArticle}"></li> -->
+            </ul>
+        </div>
+    </div>
+		<div class="container">
+			<h3>Liste des Formations</h3>
+			<a th:href="@{/saveformation}"><button style="margin-left: 1020px;
+    margin-top: -30px; width: 10%; height: 4%;" type="button" class="btn btn-primary btn-sm">Ajouter Formation</button></a><br>
+			<table border="1" class="table">
+				<thead>
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Formation</th>
+						<th scope="col">Delete</th>
+						<th scope="col">Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					<tr th:each="m:${formations}">
+						<td th:text="${m.formation_id}"></td>
+						<td th:text="${m.nom_formation}"></td>
+						
+						<td><a onclick="return alert('Are you sure ??')"
+							th:href="@{supp(id=${m.formation_id})}"><span
+								style="text-align: center;" class="glyphicon glyphicon-trash"></span></a></td>
+						<td><a th:href="@{modifier(id=${m.formation_id})}"><span
+								style="text-align: center;" class="glyphicon glyphicon-edit"></span></a></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+</div>
+
+</body>
+</html>

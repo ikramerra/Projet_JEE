@@ -1,0 +1,920 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>MyOrientation</title>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <!-- font -->
+          <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet"/>
+  
+  
+         <link rel="stylesheet" type="text/css"  th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" />
+          <link rel="stylesheet" type="text/css"  th:href="@{css/ma_slick.css}" href="../static/css/ma_slick.css" />
+          <link rel="stylesheet" type="text/css" th:href="@{css/ma_slick-theme.css}" href="../static/css/ma_slick-theme.css" />
+          <link rel="stylesheet" type="text/css" th:href="@{css/ma_service.css}" href="../static/css/ma_service.css" >
+          <link rel="stylesheet" type="text/css" th:href="@{css/ma_service_joint.css}" href="../static/css/ma_service_joint.css"/>
+
+          <!-- nouislider -->
+          <link  rel="stylesheet" type="text/css"  th:href="@{css/ma_nouislider.min.css}" href="../static/css/ma_nouislider.min.css"/>
+
+          <!-- Font Awesome Icon -->
+          <link rel="stylesheet"  type="text/css" th:href="@{css/font-awesome.min.css}" href="../static/css/font-awesome.min.css"/>
+
+          <!-- Custom stlylesheet -->
+          <link  rel="stylesheet" type="text/css"  th:href="@{css/ma_style.css}"  href="../static/css/ma_style.css" />
+          
+          
+
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+  <link rel="stylesheet" href="https://vcc.careercenter.ma/vcc/assets-fo/css/custom.css">
+<link rel="stylesheet" href="https://vcc.careercenter.ma/vcc/assets-fo/meConnaitre/riasec.css">
+<style type="text/css">
+
+table.tab1 td
+{
+display: flex; 
+/* padding-bottom: 8px; */
+/* 	font-family: 'Noto Sans JP', sans-serif; */
+/* 	font-size: 1.3em; */
+/* 	margin: 6px; */
+	
+}
+table.tab2 td
+{
+display: flex; 
+}
+.result {
+  border-radius: 2px;
+}
+.test {font-size:20px;
+     
+     font-family: Times New Roman, Times, serif; 
+     color: black;
+     margin-left: 9px;
+    }
+.paragraphe {
+ font-family: Times New Roman, Times, serif; 
+ font-style: revert;
+font-size: 1.3em;
+    FONT-VARIANT-EAST-ASIAN: JIS04;
+    color: black;
+    margin-bottom: 22px;
+}
+
+.BUT{
+
+background-color: #52b3d9; 
+margin:10px 0px 0px 9px; 
+color: white; 
+    width: 188px;
+    height: 46px;
+    text-align: revert;
+    margin-left: 411px;
+    font-weight: bold;
+    font-size: inherit;
+}
+tbody.res td{
+ font-family: Times New Roman, Times, serif; 
+ font-style: revert;
+font-size: 1.2em;
+}
+.reees{
+
+margin-left: 55px;
+}
+</style>
+</head>
+
+<body class="header-fixed header-fixed-space promo-padding-top sliding-panel-ini sliding-panel-flag-right">
+<header>
+    <!-- top Header -->
+    <div id="top-header">
+        <div class="container">
+            <div class="pull-left">
+                <span>Bienvenue sur MyOrientation!</span>
+            </div>
+            <div class="pull-right">
+                <ul class="header-top-links">
+                    <li><a th:href="@{'/'}">Qui sommes-nous</a></li>
+                    <li><a th:href="@{'/'}">Conditions Générales d'Utilisation</a></li>
+                    <li><a th:href="@{'/'}">Politique de retour</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /top Header -->
+
+    <!-- header -->
+    <div id="header">
+        <div class="container">
+            <div class="pull-left">
+                <!-- Logo -->
+                <div class="header-logo">
+                   
+                        <h3>My<span style="color:#52b3d9;">O</span>rientation
+                        </h3>
+                   
+                </div>
+                <!-- /Logo -->
+
+                <!-- Search -->
+                <div class="header-search">
+                    <form>
+                        <input class="input search-input" type="text" placeholder="Trouvez une Ecole">
+                        <select class="input search-categories">
+                            <option value="0">Par categorie</option>
+                            <option value="1">Ville</option>
+                            <option value="1">Type</option>
+                            <option value="1">Privée/Public</option>
+                           
+                        </select>
+                        <button class="search-btn"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <!-- /Search -->
+            </div>
+            <div class="pull-right">
+                <ul class="header-btns">
+                    <!-- Account -->
+                    <li class="header-account dropdown default-dropdown">
+                        <div  class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                            <div class="header-btns-icon">
+                                <i class="fa fa-user-o"></i>
+                            </div>
+                            <strong  class="text-uppercase">Mon compte<i class="fa fa-caret-down"></i></strong>
+                        </div>
+                        <ul class="custom-menu">
+                            <li><a href="#"><i class="fa fa-heart-o"></i> mes favourits</a></li>
+                            <li ><a th:href="@{/monprofile}"><i class="fa fa-lock"></i> Se connecter</a></li>
+                            <li><a th:href="@{/inscrpcandidat}"><i class="fa fa-user-plus"></i> S'inscrire</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- header -->
+    </div>
+    <!-- container -->
+</header>
+<div id="navigation">
+    <!-- container -->
+    <div class="container">
+        <div id="responsive-nav">
+            <div class="menu-nav">
+                <span class="menu-header">Accieul<i class="fa fa-bars"></i></span>
+                <ul class="menu-list">
+                    <li><a th:href="@{/home}"><i class="fa fa-home" aria-hidden="true"></i>
+                    Accueil</a></li>
+                    <li class="dropdown mega-dropdown full-width"><a th:href="@{/index}"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    Espace Administrateur</a></li>
+                    <li><a th:href="@{/etablissements}"><i class="fa fa-university" aria-hidden="true"></i>
+                    Etablissement</a></li>
+                    <li><a th:href="@{/mesMetiers}"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                    Mes métiers</a></li>
+                  
+                </ul>
+            </div>    
+        </div>
+    </div>
+    <!-- /container -->
+</div>
+<div  layout:fragment="content">
+<div class="container">
+  <div class="wrapper">
+
+   
+
+              <div class="container">
+            <div class="cube-portfolio container margin-bottom-40">
+            <p class="title-v2 title-center" style="font-size: xx-large;
+    border-bottom: inset; text-align: center; font-family: Times New Roman, Times, serif; color: blue;     margin-top: 12px;">Le test RIASEC</p>
+</div>
+   </div>
+                  <div class="container">
+       
+<div class="test"><p>Découvrez votre type de personnalité!</p></div>
+</div>
+
+     
+     <div class="printing">
+    <div class="container">
+  <div id="riasec_pageTitle">
+<!--   <div style="color: blue; font-size: large; ">Quel chemin de carrière vous correspond ? Suivez les étapes !</div> -->
+  
+  </div>
+  <div id="riasec_pageTitle">
+	<div id="pathway_title"> </div>
+  
+	</div>
+<div id="riasec_wrapper">    
+
+    <p class="paragraphe">
+    Lisez chacun des énoncés suivants. Si vous vous reconnaissez dans l’énoncé, cochez la case. Il n’y a aucune mauvaise réponse, coche toutes les cases qui vous correspondent.  </p>
+    
+	<div  id="left_box">
+	  <table class="tab1"  cellspacing="0" cellpadding="3">
+	    <tbody  ><tr>
+	      <td style="display: flex;" height="25" width="100%" ><div class="check"><input style="background-color: blue;" class="check-connaitre" type="checkbox" id="chk_1" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_1"></label></div><span id="tbl_text">J’aime travailler avec les voitures </span></td>
+
+	    
+        </tr>
+	    <tr>
+	      <td height="25"><div class="check"><input class="check-connaitre" type="checkbox" id="chk_2" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_2"></label></div><span id="tbl_text">J’aime faire des puzzles</span></td>
+
+
+
+        </tr>
+	    <tr>
+	      <td height="25"><div class="check"><input class="check-connaitre" type="checkbox" id="chk_3" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_3"></label></div><span id="tbl_text">Je suis bon pour travailler de manière indépendante<br></span></td>
+
+        </tr>
+	    <tr>
+	      <td height="25"><div class="check"><input class="check-connaitre" type="checkbox" id="chk_4" value="S" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_4"></label></div><span id="tbl_text">J’aime travailler en équipe</span></td>
+
+        </tr>
+	    <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_5" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_5"></label></div><span id="tbl_text">Je suis une personne ambitieuse,je me fixe des objectifs <br></span>
+          												 			  </td>
+
+         </tr>
+	    <tr>
+	      <td height="25"><div class="check"><input class="check-connaitre" type="checkbox" id="chk_6" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_6"></label></div><span id="tbl_text">J’aime organiser des choses (documents, bureaux)<br></span> </td>
+	      
+
+
+        </tr>
+	    <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_7" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_7"></label></div><span id="tbl_text">J’aime construire des choses</span></td>
+
+        </tr>
+	    <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_8" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_8"></label></div><span id="tbl_text">J’aime lire à propos de l’art,et de la musique  <br></span> </td>
+
+
+        </tr>
+	    <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_9" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_9"></label></div><span id="tbl_text">J’aime avoir des instructions claires à suivre  <br></span> </td>
+
+
+        </tr>
+	    <tr>
+	      <td height="25" >
+<div class="check"><input class="check-connaitre" type="checkbox" id="chk_10" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_10"></label></div><span id="tbl_text">J’aime influencer ou persuader <br></span> </td>
+	
+
+
+        </tr>
+        
+        
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_11" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_11"></label></div><span id="tbl_text">J’aime conduire des expériences</span></td>
+
+
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_12" value="S" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_12"></label></div> <span id="tbl_text">     J’aime enseigner ou former des personnes</span></td>
+	     
+
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_13" value="S" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_13"></label></div><span id="tbl_text">  J’aime aider les personnes à régler leurs problèmes <br></span> </td>
+	   
+        </tr>
+        <tr>
+	      <td height="25" >	<div class="check"><input class="check-connaitre" type="checkbox" id="chk_14" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_14"></label></div><span id="tbl_text">J’aime prendre soin des animaux</span></td>
+
+	
+        </tr>
+        <tr>
+	      <td height="25" >	<div class="check"><input class="check-connaitre" type="checkbox" id="chk_15" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_15"></label></div><span id="tbl_text">Je n’ai aucun problème à travailler plus de 8 heures par jour dans un bureau</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25" >  <div class="check"><input class="check-connaitre" type="checkbox" id="chk_16" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_16"></label></div><span id="tbl_text">J’aime vendre des choses</span></td>
+
+
+
+        </tr>
+        <tr>
+	      <td height="25" >  <div class="check"><input class="check-connaitre" type="checkbox" id="chk_17" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_17"></label></div><span id="tbl_text">J’aime la création littéraire</span></td>
+	
+
+         
+        </tr>
+        <tr>
+	      <td height="25" >  <div class="check"><input class="check-connaitre" type="checkbox" id="chk_18" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_18"></label></div><span id="tbl_text">J’aime la science</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25" >  <div class="check"><input class="check-connaitre" type="checkbox" id="chk_19" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_19"></label></div><span id="tbl_text">Je suis rapide pour prendre des responsabilités  </span></td>
+	
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_20" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_20"></label></div><span id="tbl_text">J’aime soigner les personnes </span></td>
+	 
+
+        </tr>
+        <tr>
+	      <td height="25" >    <div class="check"><input class="check-connaitre" type="checkbox" id="chk_21" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_21"></label></div><span id="tbl_text">J’aime essayer de comprendre comment fonctionnent les choses</span></td>
+
+        </tr>
+    
+      </tbody></table>
+
+      <table  class="result">
+        <tbody>
+              <tr>
+        <td height="25" class="tbl_bottom_hideLines">&nbsp;</td>
+        <td class="tbl_bottom tbl_riasec" id="leftTotal_R" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="leftTotal_I" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="leftTotal_A" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="leftTotal_S" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="leftTotal_E" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="leftTotal_C" align="center">&nbsp;</td>
+        </tr>
+ <tr>
+        <td height="25" class="tbl_bottom_hideLines td_topLine_white"></td>
+        <td width="35" height="10" align="center" style="color: blue; border:solid 2px #1CC2F2;" class="riasec_chars notranslate">R</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">I</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">A</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">S</td>
+        <td width="35" align="center" style="color: blue;border:solid 2px #1CC2F2" class="riasec_chars notranslate">E</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">C</td>
+        </tr>
+        </tbody>
+      </table>
+  	</div>
+
+
+
+
+	<div id="right_box" class="grandTotal_arrow">
+    <table class="tab2" cellspacing="0" cellpadding="3">
+	    <tbody><tr>
+	      <td height="25" >
+  <div class="check"><input class="check-connaitre" type="checkbox" id="chk_22" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_22"></label></div>
+          <span id="tbl_text">J’aime assembler des choses<br></span></td>
+	
+        </tr>
+        <tr>
+	      <td height="25" > <div class="check"><input class="check-connaitre" type="checkbox" id="chk_23" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_23"></label></div><span id="tbl_text">Je suis une personne créative</span></td>
+	      
+ 
+        </tr>
+        <tr>
+	      <td height="25" >
+<div class="check"><input class="check-connaitre" type="checkbox" id="chk_24" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_24"></label></div>
+
+          <span id="tbl_text">Je prête attention aux détails</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25" >
+<div class="check"><input class="check-connaitre" type="checkbox" id="chk_25" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_25"></label></div>
+
+          <span id="tbl_text">J’aime trier ou taper sur l’ordinateur</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_26" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_26"></label></div>
+<span id="tbl_text">J’aime analyser les choses (problèmes, situations) <br></span></td>
+	   
+        </tr>
+        <tr>
+	      <td height="25"><div class="check"><input class="check-connaitre" type="checkbox" id="chk_27" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_27"></label></div><span id="tbl_text">J’aime jouer d’un instrument ou chanter</span></td>
+       
+
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_28" value="S" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_28"></label></div><span id="tbl_text">J’aime beaucoup apprendre sur d’autres cultures</span></td>
+
+	
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_29" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_29"></label></div><span id="tbl_text">J’aimerai lancer ma propre entreprise</span></td>
+ 
+	     
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_30" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_30"></label></div><span id="tbl_text">J’aime cuisiner</span></td>
+     
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_31" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_31"></label></div><span id="tbl_text">J’aime jouer dans des pièces de théâtre</span></td>
+         
+        
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_32" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_32"></label></div><span id="tbl_text">Je suis une personne pratique</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_33" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_33"></label></div><span id="tbl_text">J’aime travailler avec des nombres et des graphiques</span></td>
+	    
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_34" value="S" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_34"></label></div><span id="tbl_text">J’aime débattre <br></span>
+        
+	 
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_35" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_35"></label></div><span id="tbl_text">Je suis bon à la prise de note </span></td>
+         
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_36" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_36"></label></div><span id="tbl_text">J’aime diriger</span></td>
+       
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_37" value="R" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_37"></label></div><span id="tbl_text">J’aime travailler à l’extérieur</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_38" value="C" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_38"></label></div><span id="tbl_text">J’aimerai travailler dans un bureau</span></td>
+
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_39" value="I" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_39"></label></div><span id="tbl_text">Je suis bon en maths</span></td>
+     
+   
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_40" value="S" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_40"></label></div><span id="tbl_text">J’aime aider les gens</span></td>
+          
+     
+        </tr>
+        <tr>
+	      <td height="25" ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_41" value="A" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_41"></label></div><span id="tbl_text">J’aime dessiner</span></td>
+ 
+        
+        </tr>
+        <tr>
+	      <td height="25"  ><div class="check"><input class="check-connaitre" type="checkbox" id="chk_42" value="E" onclick="evalCheckboxes(this.id, this.value)"  />
+  <label class="label-connaitre" for="chk_42"></label></div><span id="tbl_text">J’aime donner des discours</span></td>
+    
+      </tbody>
+    </table>
+
+            <table class="result">
+        <tbody>
+              <tr>
+        <td height="25" class="tbl_bottom_hideLines">&nbsp;</td>
+        <td class="tbl_bottom" id="rightTotal_R" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="rightTotal_I" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="rightTotal_A" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="rightTotal_S" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="rightTotal_E" align="center">&nbsp;</td>
+        <td class="tbl_bottom" id="rightTotal_C" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+        <td height="25" style="border:none;">&nbsp;</td>
+        <td width="35" height="10" align="center" style="color: blue;color: blue;border:solid 2px #1CC2F2;" class="riasec_chars notranslate">R</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2"  class="riasec_chars notranslate">I</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">A</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">S</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">E</td>
+        <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">C</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+
+	<div id="grandTotal_row">
+	  <table   border="0" cellspacing="0" cellpadding="2" style="border: none;">
+      <tbody><tr>
+	      <td height="20" style="color: blue; border:solid 1px #1CC2F2" id="grandTotal_R" align="center" class="riasec_chars_bold">0</td>
+	      <td style="border:solid 1px #1CC2F2" id="grandTotal_I" align="center" class="riasec_chars_bold notranslate">0</td>
+	      <td style="border:solid 1px #1CC2F2" id="grandTotal_A" align="center" class="riasec_chars_bold notranslate">0</td>
+	      <td style="border:solid 1px #1CC2F2" id="grandTotal_S" align="center" class="riasec_chars_bold notranslate">0</td>
+	      <td style="border:solid 1px #1CC2F2" id="grandTotal_E" align="center" class="riasec_chars_bold notranslate">0</td>
+	      <td style="border:solid 1px #1CC2F2" id="grandTotal_C" align="center" class="riasec_chars_bold notranslate">0</td>
+      </tr>
+      <tr>
+	      <td width="35" height="20" align="center" style="color: blue; border:solid 2px #1CC2F2;" class="riasec_chars notranslate">R</td>
+	      <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">I</td>
+	      <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">A</td>
+	      <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">S</td>
+	      <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">E</td>
+	      <td width="35" align="center" style="color: blue; border:solid 2px #1CC2F2" class="riasec_chars notranslate">C</td>
+      </tr>
+      </tbody></table>
+	</div>
+    
+    <p style="clear:both; margin-top:10px;margin-left:-5px;">
+        .&nbsp; 
+        
+
+        <input type="button" class="BUT"  
+        id="riasec_submit" value="VOIR LE RESULTAT" onclick="getRiasecResults();"></p>
+</div>
+
+<div style="page-break-after:always"></div>
+
+<div id="results" class="container" style="visibility: visible;">
+<!-- 	<div id="pathway_title">Quel parcours de carrière est fait pour vous ?</div> -->
+  	<div id="riasec_title"></div>
+
+	<div id="result_3_block" class="col-md-6">
+       <p class="test">
+              Voici le détail de vos réponses selon le test de Holland (RIASEC)</p>
+            <table border="0" cellspacing="0" cellpadding="0" style="clear:both; margin:0px 0px 0px 46px; border: none;">
+                <tbody  class="res"><tr>
+                    <td class="riasecResult_chars notranslate">R</td><td width="120">: Réaliste </td><td width="50">Total:</td><td><b><span id="realistic"><font><font>0</font></font></span></b></td>
+                </tr>
+                <tr>
+                    <td class="riasecResult_chars notranslate">I</td><td>: Investigateur</td><td width="50"><font><font>Total:</font></font></td><td><b><span id="investigative"><font><font>0</font></font></span></b></td>
+                </tr>
+                <tr>
+                    <td class="riasecResult_chars notranslate">A</td><td>: Artistique </td><td width="50"><font><font>Total:</font></font></td><td><b><span id="artistic"><font><font>0</font></font></span></b></td>
+                </tr>
+                <tr>
+                    <td class="riasecResult_chars notranslate">S</td><td>: Social</td><td width="50"><font><font>Total:</font></font></td><td><b><span id="social"><font><font>0</font></font></span></b></td>
+                </tr>
+                    <tr><td class="riasecResult_chars notranslate">E</td><td>: Entreprenant</td><td width="50"><font><font>Total:</font></font></td><td><b><span id="enterprising"><font><font>0</font></font></span></b></td>
+                </tr><tr>
+                    <td class="riasecResult_chars notranslate">C</td><td>: Conventionnel </td><td width="50"><font><font>Total:</font></font></td><td><b><span id="conventional"><font><font>0</font></font></span></b></td>
+                </tr>
+            </tbody></table>
+	</div>
+
+	<div id="result_4_block" class="reees">
+<p style="font-size: 20px; color: #52b3d9; font-family:serif; font-size: 20px;">
+           Votre profil (RIASEC) est  :</p>
+            <div id="myCodes">
+            	<div id="myCode_1" class="myCode notranslate">C</div><div id="myCode_2" class="myCode notranslate">E</div><div id="myCode_3" class="myCode notranslate">S</div>
+            </div>
+<!--         <p style="margin:0px 0px 0px 43px; padding:0px;"><b>NOTE:</b> Les lettres avec le résultat le plus élevé correspondent au code de vos intérêts.</p> -->
+	</div>
+    
+   
+
+<!--     <div id="text_analysis">Selon vos réponses, vous êtes <b>Conventionnel </b> (<span style="color:#1CC2F2; font-size:14px; font-weight: bold;">C</span>), <b>Entreprenant </b> (<span style="color:#1CC2F2; font-size:14px; font-weight: bold;">E</span>), et <b>Social</b> (<span style="color:#1CC2F2; font-size:14px; font-weight: bold;">S</span>).</div> -->
+
+</div>
+</div>   
+    </div></div>   
+    </div>
+                
+   
+
+<!--/wrapper-->
+<footer id="footer" class="section section-grey">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<!-- footer logo -->
+						<div class="footer-logo">
+							<a class="logo" href="#">
+								<h2>
+									<span style="color: #f2dede;">MyOrientation</span>
+								</h2>
+							</a>
+						</div>
+						<!-- /footer logo -->
+
+						<p>Bienvenue sur MyOrientation, Pour trouver le meilleur 
+							meilleur parcoure d'étude correspondant à 
+							le code RIASEC, Métiers, Formations et Etablissements
+							!!</p>
+
+						<!-- footer social -->
+						<ul class="footer-social list-links-social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						</ul>
+						<!-- /footer social -->
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Mon Compte</h3>
+						<ul class="list-links-footer">
+							<li><a href="#">Metiers</a></li>
+							<li><a th:href="@{/}">Etablissements</a></li>
+							<li><a th:href="@{'/'}">Se connecter</a></li>
+							<li><a th:href="@{'/'}">Se déconnecter</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix visible-sm visible-xs"></div>
+
+				<!-- footer widget -->
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">À PROPOS</h3>
+						<ul class="list-links-footer">
+							<li><a th:href="@{'/'}">Qui sommes-nous</a></li>
+							<li><a th:href="@{'/'}">Conditions Générales
+									d'Utilisation</a></li>
+							<li><a th:href="@{'/'}">Politique de retour</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="footer">
+						<h3 class="footer-header">Rejoignez nouss</h3>
+						<p>Inscrivez-vous à nos communications pour trouver son
+						orientation professionnelle!</p>
+						<form>
+							<div class="form-group">
+								<input name="email" class="input" placeholder="Votre email">
+							</div>
+							<button class="primary-btn">Inscrit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>
+						powred by MyOrientation
+					</div>
+					<!-- /footer copyright -->
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+	</footer>
+<script src="https://vcc.careercenter.ma/vcc/assets-fo/plugins/jquery/jquery.min.js"></script>
+
+<script src="https://vcc.careercenter.ma/vcc/assets-fo/ajax/login-facebook.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	jQuery('#results').css('display', 'none');
+}); //END jQuery(document).ready
+var gLeftTotal_R = 0;
+var gLeftTotal_I = 0;
+var gLeftTotal_A = 0;
+var gLeftTotal_S = 0;
+var gLeftTotal_E = 0;
+var gLeftTotal_C = 0;
+var gRightTotal_R = 0;
+var gRightTotal_I = 0;
+var gRightTotal_A = 0;
+var gRightTotal_S = 0;
+var gRightTotal_E = 0;
+var gRightTotal_C = 0;
+function evalCheckboxes(strQuestionNum, strChar){
+	var tmpChkID = strQuestionNum;
+	if(parseInt(tmpChkID.substr(4)) <= 21){	
+		//------------ Left side questions -----------------
+		if(jQuery('#chk_'+parseInt(tmpChkID.substr(4))).is(':checked')){
+			switch(strChar){
+				case "R":
+					gLeftTotal_R = gLeftTotal_R + 1;
+					break;
+				case "I":
+					gLeftTotal_I = gLeftTotal_I + 1;
+					break;
+				case "A":
+					gLeftTotal_A = gLeftTotal_A + 1;
+					break;
+				case "S":
+					gLeftTotal_S = gLeftTotal_S + 1;
+					break;
+				case "E":
+					gLeftTotal_E = gLeftTotal_E + 1;
+					break;
+				case "C":
+					gLeftTotal_C = gLeftTotal_C + 1;
+					break;
+			}	
+		}else{
+			switch(strChar){
+				case "R":
+					gLeftTotal_R = gLeftTotal_R - 1;
+					break;
+				case "I":
+					gLeftTotal_I = gLeftTotal_I - 1;
+					break;
+				case "A":
+					gLeftTotal_A = gLeftTotal_A - 1;
+					break;
+				case "S":
+					gLeftTotal_S = gLeftTotal_S - 1;
+					break;
+				case "E":
+					gLeftTotal_E = gLeftTotal_E - 1;
+					break;
+				case "C":
+					gLeftTotal_C = gLeftTotal_C - 1;
+					break;
+			}
+		}
+		
+		if(eval('gLeftTotal_'+strChar) < 1){
+			jQuery('#leftTotal_'+strChar).html("");
+		}else{
+			jQuery('#leftTotal_'+strChar).html(eval('gLeftTotal_'+strChar));
+		}
+		
+	}else{
+		//------------ Right side questions -----------------
+		if(jQuery('#chk_'+parseInt(tmpChkID.substr(4))).is(':checked')){
+			switch(strChar){
+				case "R":
+					gRightTotal_R = gRightTotal_R + 1;
+					break;
+				case "I":
+					gRightTotal_I = gRightTotal_I + 1;
+					break;
+				case "A":
+					gRightTotal_A = gRightTotal_A + 1;
+					break;
+				case "S":
+					gRightTotal_S = gRightTotal_S + 1;
+					break;
+				case "E":
+					gRightTotal_E = gRightTotal_E + 1;
+					break;
+				case "C":
+					gRightTotal_C = gRightTotal_C + 1;
+					break;
+			}	
+		}else{
+			switch(strChar){
+				case "R":
+					gRightTotal_R = gRightTotal_R - 1;
+					break;
+				case "I":
+					gRightTotal_I = gRightTotal_I - 1;
+					break;
+				case "A":
+					gRightTotal_A = gRightTotal_A - 1;
+					break;
+				case "S":
+					gRightTotal_S = gRightTotal_S - 1;
+					break;
+				case "E":
+					gRightTotal_E = gRightTotal_E - 1;
+					break;
+				case "C":
+					gRightTotal_C = gRightTotal_C - 1;
+					break;
+			}
+		}
+		
+		if(eval('gRightTotal_'+strChar) < 1){
+			jQuery('#rightTotal_'+strChar).html("");
+		}else{
+			jQuery('#rightTotal_'+strChar).html(eval('gRightTotal_'+strChar));
+		}
+		
+	}
+	var grandtotal = eval('gLeftTotal_'+strChar) + eval('gRightTotal_'+strChar);
+	if(grandtotal < 1){
+		jQuery('#grandTotal_'+strChar).html(grandtotal);
+	}else{
+		jQuery('#grandTotal_'+strChar).html(grandtotal);
+	}
+}
+function getRiasecResults(){
+	jQuery('#cpInfo_R').removeClass('cp_highlighted');
+	jQuery('#cpInfo_I').removeClass('cp_highlighted');
+	jQuery('#cpInfo_A').removeClass('cp_highlighted');
+	jQuery('#cpInfo_S').removeClass('cp_highlighted');
+	jQuery('#cpInfo_E').removeClass('cp_highlighted');
+	jQuery('#cpInfo_C').removeClass('cp_highlighted');
+
+	jQuery('.infoBox_btn').css('visibility','hidden');
+            jQuery('#results').css('display', 'block');
+jQuery('html, body').animate({ scrollTop: jQuery("#riasec_wrapper")[0].scrollBottom },1000, function() {
+					var riasecArray = [
+										["R", jQuery('#grandTotal_R').text()], 
+										["I", jQuery('#grandTotal_I').text()],
+										["A", jQuery('#grandTotal_A').text()],
+										["S", jQuery('#grandTotal_S').text()],
+										["E", jQuery('#grandTotal_E').text()],
+										["C", jQuery('#grandTotal_C').text()]
+									  ];
+riasecArray.sort( function( a, b )
+					{
+					  // Sort by the 2nd value in each array
+					  if ( a[1] == b[1] ) return 0;
+					  return a[1] < b[1] ? -1 : 1;
+					});
+					
+					riasecArray.reverse( function( a, b )
+					{
+					  // Sort by the 2nd value in each array
+					  if ( a[1] == b[1] ) return 0;
+					  return a[1] < b[1] ? -1 : 1;
+					});
+					
+					jQuery('#myCode_1').html(riasecArray[0][0]);
+					jQuery('#myCode_2').html(riasecArray[1][0]);
+					jQuery('#myCode_3').html(riasecArray[2][0]);
+					
+					for (var i=0;i<riasecArray.length; i++) {
+						//alert(riasecArray[i][0] + ' - ' + riasecArray[i][1]);
+						if(riasecArray[i][0] == "R"){ jQuery('#realistic').html(riasecArray[i][1]); };
+						if(riasecArray[i][0] == "I"){ jQuery('#investigative').html(riasecArray[i][1]); };
+						if(riasecArray[i][0] == "A"){ jQuery('#artistic').html(riasecArray[i][1]); };
+						if(riasecArray[i][0] == "S"){ jQuery('#social').html(riasecArray[i][1]); };
+						if(riasecArray[i][0] == "E"){ jQuery('#enterprising').html(riasecArray[i][1]); };
+						if(riasecArray[i][0] == "C"){ jQuery('#conventional').html(riasecArray[i][1]); };
+					}
+			var longNameArray = new Array()
+						longNameArray["R"] = "Réaliste";
+						longNameArray["I"] = "Investigateur";
+						longNameArray["A"] = "Artistique";
+						longNameArray["S"] = "Social";
+						longNameArray["E"] = "Entreprenant";
+						longNameArray["C"] = "Conventionnel";
+// 		
+          jQuery('#text_analysis').html(analysisString);
+					jQuery('#cpInfo_' + riasecArray[0][0]).addClass('cp_highlighted');
+					jQuery('#cpInfo_' + riasecArray[1][0]).addClass('cp_highlighted');
+					jQuery('#cpInfo_' + riasecArray[2][0]).addClass('cp_highlighted');				
+					jQuery('#cpInfo_' + riasecArray[0][0] + '_btn').css('visibility', 'visible');
+					jQuery('#cpInfo_' + riasecArray[1][0] + '_btn').css('visibility', 'visible');
+					jQuery('#cpInfo_' + riasecArray[2][0] + '_btn').css('visibility', 'visible');
+			});// END jQuery("#riasec_wrapper").animate
+	//});// END jQuery('#riasec_wrapper').animate({
+}
+
+// function printResults(){
+// 	window.print();
+// }
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78627787-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/slick.min.js}"></script>
+ <script th:src="@{js/nouislider.min.js}"></script>
+<script th:src="@{js/jquery.zoom.min.js}"></script>
+<script th:src="@{js/main.js}"></script>
+  </body>
+
+   </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="layout">
+<head>
+<meta charset="utf-8">
+<link rel = "stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+th:href="@{css/bootstrap.min.css}">
+<title>MyOrientation</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+<div class="container">
+<div class="panel panel-default">
+<br/><br/>
+<div class="panel-heading"> Saisir une Formation
+</div>
+<div class="panel-body">
+<form th:action="@{s}" method="post">
+<div class="form-group">
+<label class="control-label">ID:</label>
+<input readonly="readonly" style="background-color: silver; "class="form-control" type="text"/>
+</div>
+<div class="form-group">
+<label class="control-label">Formation:</label>
+<input class="form-control" type="text" name="nom_formation" th:href="${formation.nom_formation}"/>
+</div>
+<div>
+<button type="submit" class="btn btn-primary">Enregistrer</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

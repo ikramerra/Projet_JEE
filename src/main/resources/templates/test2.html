@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+  <link rel="stylesheet" media="all" href="/assets/application-235f22a6809a3929a21c68d196d9a56aeffffa8f71f53ab59453c2b6a8ca3568.css" />
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="fd147c/w3VHKTdjmavCRFPK80wiV1SnPM2xsB1jRBN2jBeC8YrnLSwCmkfbJT0eN+nIdhP9hXpr9pbhQbzJHRQ==" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon-152.png" />
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+  <script src="/assets/globalhead-d2b82e612d2a812e8be2a57300dab8923c4f2edbe7a799e7da70791b595646fe.js"></script>
+</head>
+<body>
+<div class="container" layout:fragment="content"><form th:action="@{/test2}"><p th:text=${add}></p></form>
+<div class="results">
+              <ul>
+      <li><a class="career" href="/metiers-et-professions/fiche/apiculteur">Apiculteur</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/eleveur-de-chiens">Éleveur de chiens</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/lieutenant-de-la-marine-marchande">Lieutenant de la marine marchande</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/pilote-de-navire">Pilote de navire</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-lapins">Producteur de lapins</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/gerant-d-entreprise-agricole">Gérant d&#39;entreprise agricole</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/pomiculteur">Pomiculteur</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-chevaux">Producteur de chevaux</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-legumes">Producteur de légumes</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-porcins">Producteur de porcins</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/reparateur-de-voies-ferrees">Réparateur de voies ferrées</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/exploitant-agricole">Exploitant agricole</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-fruits">Producteur de fruits</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-pommes-de-terre">Producteur de pommes de terre</a></li>
+      <li><a class="career" href="/metiers-et-professions/fiche/producteur-de-semences">Producteur de semences</a></li>
+  </ul>
+
+        </div>
+</div>
+</body>
+</html>

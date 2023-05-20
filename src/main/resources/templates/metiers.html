@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+	
+	<link rel="stylesheet" type="text/css"
+	href="../static/css/test.css"
+	th:href="@{css/test.css}">
+	
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+	
+<title>metiers</title>
+<style>
+	.container .nav.nav-pills{
+	display: flex;
+	justify-content: center;
+}
+</style>
+<style type="text/css">
+
+.table-hover{
+  color: table table-hover"
+}
+</style>
+</head>
+<body>
+
+	<p></p>
+	<div class="container" layout:fragment="content">
+<!-- 		<div class="container"> -->
+<!-- 			<form th:action="@{/login}" method="post"> -->
+<!-- 				<label> Métier : </label> <input type="text" name="m" -->
+<!-- 					placeholder="Chercher une métier" /> -->
+<!-- 				<button class="btn btn-primary" th:href="@{/login}">Chercher</button> -->
+<!-- 			</form> -->
+
+<!-- 		</div> -->
+<p></p>
+<div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Espace Administrateur</a></li>
+                <li><a href="#">Gestion des Métiers</a></li>
+                
+<!--                 <li class="active" th:text="${article.libArticle}"></li> -->
+            </ul>
+        </div>
+    </div>
+		<div class="container">
+			<h3>Liste des Métiers</h3>
+			<a th:href="@{/savemetier}">
+			<button style="margin-left: 1020px;
+    margin-top: -30px; width: 10%; height: 4%;" type="button" class="btn btn-primary btn-sm">Ajouter Métier</button></a><br>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th style="color: black;"  scope="col">Id</th>
+						<th scope="col">Metier</th>
+						<th scope="col">Secteur</th>
+						<th scope="col">Delete</th>
+						<th scope="col">Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					<tr th:each="m:${pagemetiers.content}">
+					<th scope="row" style="color: black;">[[*{m.metier_id}]]</th>
+<!-- 						<td th:text="${m.metier_id}"></td> -->
+						<td style="color: black;" th:text="${m.nmetier}"></td>
+						<td style="color: black;" th:text="${m.secteur.nsecteur}"></td>
+						<td><a onclick="return confirm('Voulez-vous vraiment supprimer ce métier?')"
+							th:href="@{delete(id=${m.metier_id})}"><span
+								style="text-align: center;" class="glyphicon glyphicon-trash"></span></a></td>
+						<td><a th:href="@{edit(id=${m.metier_id})}"><span
+								style="text-align: center;" class="glyphicon glyphicon-edit"></span></a></td>
+					</tr>
+
+				</tbody>
+			</table>
+				<div  class="container">
+<ul class="nav nav-pills ">
+
+<li th:each="page,status:${pages}">
+<a th:class="${status.index==page?'btn btn-primary':'btn'}" class="btn" th:href="@{metiers(page=${status.index}, size=${size})}"  th:text="${status.index}"></a>
+</li>
+</ul>
+</div>		
+		</div>
+	</div>
+</body>
+
+</html>

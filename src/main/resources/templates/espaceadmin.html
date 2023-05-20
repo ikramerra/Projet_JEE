@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+ <head>
+          <meta charset="UTF-8"/>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <!-- font -->
+          <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet"/>
+
+          <!-- Bootstrap -->
+
+
+          <!-- Slick -->
+          <link rel="stylesheet" type="text/css"  th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" />
+          <link rel="stylesheet" type="text/css"  th:href="@{css/ma_slick.css}" href="../static/css/ma_slick.css" />
+          <link rel="stylesheet" type="text/css" th:href="@{css/ma_slick-theme.css}" href="../static/css/ma_slick-theme.css" />
+          <link rel="stylesheet" type="text/css" th:href="@{css/ma_service.css}" href="../static/css/ma_service.css" >
+          <link rel="stylesheet" type="text/css" th:href="@{css/ma_service_joint.css}" href="../static/css/ma_service_joint.css"/>
+
+          <!-- nouislider -->
+          <link  rel="stylesheet" type="text/css"  th:href="@{css/ma_nouislider.min.css}" href="../static/css/ma_nouislider.min.css"/>
+
+          <!-- Font Awesome Icon -->
+          <link rel="stylesheet"  type="text/css" th:href="@{css/font-awesome.min.css}" href="../static/css/font-awesome.min.css"/>
+
+          <!-- Custom stlylesheet -->
+          <link  rel="stylesheet" type="text/css"  th:href="@{css/ma_style.css}"  href="../static/css/ma_style.css" />
+          <title>MyOrientation</title>
+</head>
+<body>
+<div  layout:fragment="content">
+<div class="container">
+        <div id="responsive-nav">
+            <br/> <br/>
+<div style="background-color:  black;" class="menu-nav">
+                <span class="menu-header">Espace Administrateur<i class="fa fa-bars"></i></span>
+                <ul class="menu-list">
+                    <li><a th:href="@{/metiers}">Gestion des Métiers</a></li>
+                    <li class="dropdown mega-dropdown full-width"><a th:href="@{/listesetablissements}">Gestion des Etablissements</a>
+                        </li>
+                    <li><a th:href="@{/Formation}">Gestion des Formations</a></li>
+                  
+                </ul>
+            </div>
+           <br/> <br/>
+
+</div>
+</div>
+<div class="container">
+
+<div class="row hidden-sm hidden-xs">
+                                <div class="col-md-12">
+                                  <br><br>
+                                    <a class="banner banner-1" href="#">
+                                        <img width="90%" height="80%" src = "images/8.jpg" alt=""> 
+                                       
+                                    </a>
+                                </div>
+                            </div>
+        </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+
+
+<head>
+<meta charset="UTF-8" />
+
+<title>MyOrientation</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb">
+			<div class="container">
+				<ul class="breadcrumb">
+					<li><a href="#">Accueil</a></li>
+					
+					<li class="active">Mon Projet Professionnel</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="section">
+			<!-- container -->
+			<div class="container ">
+				
+				<h3 style="text-align: center;">Mon Projet d'étude</h3>
+<!-- 				<img alt="" th:src="*{'data:image/jpg;base64,'+{candidat.image}}" style="width: 100px;height: 100px;"> -->
+<!-- 			   <h3 th:text=${candidat.tel}>Tel</h3> -->
+<!-- 			   <h3 th:text=${candidat.prenom}> Nom </h3> -->
+
+				<h3>NOM</h3>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /section -->
+	</div>
+
+
+</body>
+</html>

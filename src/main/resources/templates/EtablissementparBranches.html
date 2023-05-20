@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css"
+	href="../static/bootstrap/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/util.css">
+
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap')
+	;
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Cabin:wght@500&family=Inconsolata&family=Libre+Baskerville:ital@0;1&display=swap');
+
+table td {
+	font-weight: bold;
+	padding-bottom: 8px;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 1.3em;
+	margin: 6px;
+	cursor: default;
+}
+
+button .fa fa-info-circle {
+	margin-right: -25px;
+}
+
+td:hover {
+	background: rgba(240, 240, 240, 0.7);
+}
+
+th .fa-university {
+	color: #52b3d9;
+	font-size: 1.3em;
+	padding-right: 0px;
+}
+
+.fa-info-circle {
+	color: #52b3d9;
+	font-size: 1.2em;
+}
+
+th .fa-university:hover {
+	transition: 0.3s ease-in-out;
+	transform: translate(10px);
+}
+
+.hi {
+	margin-right: -30px;
+	padding-top: 12px;
+}
+p.hello{
+    font-size: 17px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-bottom: 5%;
+    font-family: 'Inconsolata', monospace;
+}
+i {
+
+font-size: 22px;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+	.table>tbody>tr>td, .table>tfoot>tr>td {
+	vertical-align: middle !important;
+}
+</style>
+<title>Formations</title>
+</head>
+<body>
+	<p></p>
+	<div class="container" layout:fragment="content">
+
+
+		<div class="container">
+			<br> <br>
+
+			<h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 31px; color: #52b3d9;" class="title">Établissements qui
+				offrent [[*{nomBranche}]]</h3>
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+
+					</tr>
+				</thead>
+				<tbody>
+
+
+					<tr th:each="e:${etablissements}">
+						<th scope="row"><p class="hi">
+								<i class="fa fa-university" aria-hidden="true"></i>
+							</p></th>
+						<td class="text-uppercase" th:text="${e.etablissement}">
+							<p style="width: 100%;" class="hover"></p>
+						</td>
+
+
+						<td>
+							<button style="margin-right: -25px;" type="button"
+								class="fa fa-info-circle" data-toggle="modal"
+								th:attr="data-target='#exampleModalCenter'+*{e.etablissement_id}">
+							</button> <!-- Modal -->
+							<div class="modal fade"
+								th:id="*{'exampleModalCenter'+{e.etablissement_id}}"
+								tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<span class="login100-form-title p-b-32"
+												style="text-align: center; color: #52b3d9;">
+												InFormations Sur [[*{e.etablissement}]] </span>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+										<div class="ico" style="display: flex">
+											<i  style="color: #52b3d9;" class="fa fa-university"aria-hidden="true"></i>
+											<p class="hello"><strong> [[*{e.etablissement}]] </strong> </p>
+										</div>
+										<div style="display: flex">
+											 <i style="color: #52b3d9;" class="fa fa-map-marker" aria-hidden="true"></i> 
+											 <p class="hello"><strong> [[*{e.etb_adresse}]] </strong></p>
+										</div>
+										<div style="display: flex">
+											 <i style="color: #52b3d9;"
+												 class="glyphicon glyphicon-earphone"
+												aria-hidden="true"></i> 
+											<p class="hello"><strong> 
+												[[*{e.etb_tel}]] </strong> </p>
+										</div>
+										<div style="display: flex">
+											 <i style="color: #52b3d9;"
+												 class="glyphicon glyphicon-phone-alt"
+												aria-hidden="true"></i>
+											 <p class="hello"><strong>
+												[[*{e.etb_fax}]] </strong></p>
+										</div>
+											<div style="display: flex">
+											 <i style="color: #52b3d9;"
+												 class="glyphicon glyphicon-asterisk"
+												aria-hidden="true"></i>
+											 <p class="hello"><strong
+												>[[*{e.ville.nomville}]]
+											</strong></p>
+										</div>
+										
+											<div style="display: flex">
+												<i style="color: #52b3d9;" class="fa fa-info-circle"
+													aria-hidden="true"></i>
+												<p class="hello">
+													<strong style="font-weight: bold;">
+														[[*{e.description}]]</strong>
+												</p>
+											</div>
+											<div  style="display: flex">
+												<i style="color: #52b3d9;" class="glyphicon glyphicon-globe"
+												aria-hidden="true"></i>
+												<p class="hello"><strong style="font-weight: bold;">[[*{e.etb_site}]]</strong></p>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Close</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+<title>MyOrientation</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="container">
+			<div class="panel panel-default">
+				<br />
+				<br />
+					
+					
+				<div class="panel-heading">Saisir une Etablissement</div>
+				<div class="panel-body">
+					<form th:action="@{saveetablissement2}" method="post">
+						<div class="form-group">
+							<label class="control-label">ID:</label> <input
+								readonly="readonly" style="background-color: silver;"
+								class="form-control" type="text" name="id" />
+						</div>
+						<div class="form-group">
+							<label class="control-label">Etablissement:</label> <input
+								class="input" type="text" name="etablissement"
+								th:href="${etablissement.etablissement}" />
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">Privé/Public:</label> <select
+								class="input" name="type"
+								th:field="*{etablissement.type}" >
+								<option th:each="type :${types}" th:text="${type.ntype}"
+									th:value="${type.type_id}">
+								</option >
+								</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Université:</label> <select
+								class="input" name="type"
+								th:field="*{etablissement.university}" >
+								<option th:each="un :${universities}" th:text="${un.nom_university}"
+									th:value="${un.university_id}">
+								</option >
+								</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Ville : </label> <select
+								class="input" name="type"
+								th:field="*{etablissement.ville}" >
+								<option th:each="ville :${villes}" th:text="${ville.nomville}"
+									th:value="${ville.ville_id}">
+								</option >
+								</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Type : </label> <select
+								class="input" name="type"
+								th:field="*{etablissement.genre}" >
+								<option th:each="g :${genrs}" th:text="${g.nom_genre}"
+									th:value="${g.id}">
+								</option >
+								</select>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">Enregistrer</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css"
+	href="../static/bootstrap/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+	
+	<style type="text/css">
+	@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap')
+	;
+		@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Cabin:wght@500&family=Inconsolata&family=Libre+Baskerville:ital@0;1&display=swap');
+	
+	table td {
+	font-weight: bold;
+	padding-bottom: 8px;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 1.3em;
+	margin: 6px;
+	cursor: def
+}
+	.fa-graduation-cap {
+	color: #52b3d9;
+	font-size: 1.8em;
+}
+a.link{
+	    margin-left: 85%;
+}
+td:hover {
+	background: rgba(240, 240, 240, 0.7);
+}
+
+table td:hover>p.cart {
+	transition: 0.3s ease-in-out;
+	transform: translate(10px);
+}
+.fa-graduation-cap:hover {
+	transition: 0.3s ease-in-out;
+	transform: translate(10px);
+}
+.cart {
+	margin-right: -32px;
+	padding-top: 12px;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+vertical-align: middle !important;
+}
+	</style>
+<title>Formations</title>
+</head>
+<body>
+	<p></p>
+	<div class="container" layout:fragment="content">
+
+
+		<div class="container">
+			<br>
+			<br>
+			<h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 31px; color: #52b3d9;" class="title">Programmes de formation
+				reliés à [[*{nomMetier}]]</h3>
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col"	></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="m:${formations}">
+						<th scope="row" style="width: 57px;"><p class="cart"><i class="fa fa-graduation-cap"
+							aria-hidden="true"></i></p></th>
+						<td class="text-uppercase" th:text="${m.nom_formation}"></td>
+
+						<td><a  class="link"
+							th:href="@{/BranchesParFormation(id = ${m.formation_id})}"><span
+								style="text-align: center;"
+								class="glyphicon glyphicon-new-window"></span></a></td>
+
+
+					</tr>
+
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</body>
+
+</html>

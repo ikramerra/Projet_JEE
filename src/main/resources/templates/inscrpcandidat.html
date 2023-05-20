@@ -1,0 +1,193 @@
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{css/validation.css}"
+	href="../static/css/validation.css" />
+
+<title>MyOrientation</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb">
+			<div class="container">
+				<ul class="breadcrumb">
+					<li><a href="#">Accueil</a></li>
+					<li class="active">Inscription</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<form class="validate-form" th:action="@{savecandidat}"
+						method="post" enctype="multipart/form-data">
+						<div class="col-md-6">
+							<div class="billing-details">
+								<p>
+									Vous avez deja un compte ? <a th:href="@{/login}">Se
+										connecter</a>
+								</p>
+								<div class="section-title">
+									<h3 class="title">Données personnelle</h3>
+								</div>
+								<div class="form-group validate-input"
+									data-validate="indispensable">
+									<input class="input" type="text" name="nom" placeholder="Nom"
+										th:href="${candidat.nom}">
+
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="prenom"
+										placeholder="prénom" th:href="${candidat.prenom}">
+
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="tel"
+										placeholder="Téléphone" th:href="${candidat.tel}">
+
+								</div>
+
+								<div class="form-group">
+									<input class="input" type="text" name="adress"
+										placeholder="Adresse" th:href="${candidat.adress}">
+
+								</div>
+
+								<div class="form-group">
+									<span class="text-uppercase">Riasec:</span> <select
+										class="input" name="r" th:field="*{candidat.riasec}">
+										<option th:each="r :${riasecs}" th:text="${r.codeRiasec}"
+											th:value="${r.riasec_id}"></option>
+									</select>
+
+								</div>
+								<div class="form-group">
+									<p style="color: #1CC2F2;">
+										Passer Le Test de Hollande <a th:href="@{/ind}">Cliquer
+											ici</a>
+									</p>
+								</div>
+
+								<div class="form-radio">
+
+									<div class="form-radio-group">
+										<div class="form-radio-item">
+											<input type="radio" name="payment" id="cash" checked>
+											<label for="cash">Homme</label> <span class="check"></span> <input
+												style="left: 30%" type="radio" name="payment" id="cheque">
+											<label for="cheque">Femme</label> <span class="check"></span>
+										</div>
+
+
+									</div>
+								</div>
+								<br>
+								<div class="form-group">
+									<input class="input" type="email" name="email"
+										placeholder="Email" th:href="${candidat.email}"> <span
+										style="color: firebrick;" th:if="${exist}"> Cet email
+										est deja utilisé </span>
+								</div>
+								<div class="form-group">
+									<input class="input" type="password" name="password"
+										placeholder="Mot de passe" th:href="${candidat.password}">
+
+								</div>
+								<div class="form-group">
+									<input type="file" name="file" class="custom-file-input"
+										id="customFile" /> <label class="custom-file-label"
+										for="customFile">Votre Image</label>
+
+								</div>
+								<div class="form-group">
+									<div class="input-checkbox">
+										<input type="checkbox" id="register"> <label
+											class="font-weak" for="register">J'accepte les termes
+											et la politique de confidentialité</label>
+										<div class="caption">
+											<button class="primary-btn">Valider</button>
+										</div>
+									</div>
+								</div>
+							</div>
+   </div>
+							<div class="col-md-6">
+							<p>
+									
+								</p><br>
+								<div class="shiping-methods">
+									<div class="section-title">
+										<h3 class="title">Données de santé</h3>
+									</div>
+
+
+									<div class="form-group">
+										<input class="input" type="text" name="taille"
+											placeholder="Taille" th:href="${candidat.taille}">
+
+									</div>
+
+								</div>
+
+								<div class="form-group">
+									<span class="text-uppercase">Maladie:</span> <select
+										class="input" name="nom_maladie"
+										th:field="*{candidat.maladie}">
+										<option th:each="nom_maladie :${maladies}"
+											th:text="${nom_maladie.nom_maladie}"
+											th:value="${nom_maladie.maladie_id}"></option>
+									</select>
+
+								</div>
+
+
+								<div class="form-group">
+									<!-- 								<input class="input" type="text" name="operation" -->
+									<!-- 									placeholder="Vous etes Dèja faite une Opération ?" th:href="${candidat.operation}" /> -->
+									<select class="input" name="operation"
+										th:field="*{candidat.operation}">
+										<option th:text="oui" th:value="1"></option>
+										<option th:text="Non" th:value="0"></option>
+									</select>
+								</div>
+								
+								<div class="section-title">
+										<h3 class="title">Données de Formation</h3>
+									</div>
+								
+								<div class="form-group">
+									<span class="text-uppercase">Filière:</span> <select
+										class="input">
+										<option value="1" selected="selected">Science
+											Mathématique</option>
+										<option value="2">Science Mathématique</option>
+										<option value="3">Science Physique</option>
+										<option value="4">Science de la vie et la terre</option>
+										<option value="4">Science Humains</option>
+									</select> <br>
+									<br>
+
+
+
+								</div>
+							</div>
+
+
+				
+		
+
+ </form>
+ </div>
+  </div>
+   </div>
+</div>
+</body>
+</html>
